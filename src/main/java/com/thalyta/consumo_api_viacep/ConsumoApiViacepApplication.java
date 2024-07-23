@@ -1,13 +1,24 @@
 package com.thalyta.consumo_api_viacep;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.io.IOException;
 
-@SpringBootApplication
+import com.thalyta.model.Address;
+import com.thalyta.service.ViaCepService;
+
 public class ConsumoApiViacepApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ConsumoApiViacepApplication.class, args);
+		ViaCepService vcs = new ViaCepService();
+
+		try {
+
+			Address address = vcs.getAddress("65300855");
+			System.out.println(address.toString());
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }
